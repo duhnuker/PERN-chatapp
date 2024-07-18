@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts"
+  },
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
