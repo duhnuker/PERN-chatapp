@@ -1,5 +1,5 @@
-import { profile } from "console";
-import { connect } from "http2";
+import { Request, Response } from "express";
+import prisma from "../db/prisma";
 
 export const sendMessage = async (req: Request, res: Response) => {
     try {
@@ -37,7 +37,7 @@ export const sendMessage = async (req: Request, res: Response) => {
             conversation = await prisma.conversation.update({
                 where: {
                     id: conversation.id,
-                };
+                },
                 data: {
                     messages: {
                         connect: {
@@ -58,7 +58,7 @@ export const sendMessage = async (req: Request, res: Response) => {
 
 export const getMessages = async (req: Request, res: Response) => {
     try {
-        const {id:userToChatId}
+        const { id:userToChatId } = req.params;
         const senderId = req.user.id;
 
         const conversation = await prisma.conversation.findFirst({
